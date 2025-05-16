@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oxford High School Precious Plastic</title>
+  <title>Oxford Precious Plastic</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
@@ -18,19 +22,27 @@
     header {
       background-color: #00264d;
       color: #fff;
-      padding: 20px;
-      text-align: center;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header .logo {
+      display: flex;
+      align-items: center;
     }
     header img {
-      height: 40px;
-      vertical-align: middle;
+      height: 60px;
       margin-right: 10px;
     }
     nav a {
-      margin: 0 15px;
+      margin: 0 10px;
       color: #fff;
       text-decoration: none;
       font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
     .hero {
       background-image: url('images/hero.jpg');
@@ -41,7 +53,8 @@
       color: #fff;
     }
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
+      text-shadow: 2px 2px 4px #000;
     }
     .section {
       padding: 40px 20px;
@@ -50,16 +63,23 @@
     .goals, .products {
       display: flex;
       justify-content: center;
-      gap: 40px;
+      gap: 30px;
       flex-wrap: wrap;
     }
     .goal, .product {
-      flex: 1 1 200px;
+      flex: 1 1 250px;
       margin: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #f0f0f0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
     .product img {
-      width: 200px;
-      border-radius: 10px;
+      width: 100%;
+      max-width: 250px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
     }
     .footer {
       background-color: #00264d;
@@ -69,8 +89,12 @@
     }
     .footer a {
       color: white;
-      margin: 0 10px;
+      margin: 0 15px;
       text-decoration: none;
+      font-size: 1.2rem;
+    }
+    .footer a i {
+      margin-right: 8px;
     }
     .button {
       background-color: #004080;
@@ -102,20 +126,22 @@
 </head>
 <body>
   <header>
-    <img src="images/logo.png" alt="Logo">
-    <span><h2 style="display: inline;">OXFORD PRECIOUS PLASTIC</h2></span>
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo">
+      <h2>OXFORD PRECIOUS PLASTIC</h2>
+    </div>
     <nav>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#how">How It Works</a>
       <a href="#getinvolved">Get Involved</a>
-      <a href="#login-section" class="button">Member Login</a>
+      <a href="#login-section" class="button">Login</a>
     </nav>
   </header>
   <div class="hero">
     <h1>First Precious Plastic Workspace in Mississippi!</h1>
   </div>
-  <div class="section">
+  <div class="section" id="about">
     <h2>Our Goals</h2>
     <div class="goals">
       <div class="goal">Minimize impact</div>
@@ -126,6 +152,7 @@
   </div>
   <div class="section" id="projects">
     <h2>What We Make</h2>
+    <p>We recycle local #5 plastic waste into benches, chairs, and other functional products for the community.</p>
     <div class="products">
       <div class="product">
         <img src="images/bench.jpg" alt="Bench">
@@ -154,8 +181,8 @@
   </div>
   <div class="footer">
     <p>
-      <a href="https://instagram.com/Oxfordpreciousplastic">@Oxfordpreciousplastic</a> |
-      <a href="mailto:oxfordpreciousplastic@gmail.com">oxfordpreciousplastic@gmail.com</a>
+      <a href="https://instagram.com/Oxfordpreciousplastic"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="mailto:oxfordpreciousplastic@gmail.com"><i class="fas fa-envelope"></i>Email</a>
     </p>
   </div>
 
