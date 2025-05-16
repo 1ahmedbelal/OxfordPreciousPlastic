@@ -162,3 +162,29 @@ footer a i {
 .fade-in-up {
   animation: fadeIn 1.3s ease-out;
 }
+.subtitle {
+  font-size: 1.3rem;
+  margin: 10px 0 20px;
+  color: #eee;
+}
+
+.goal i {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  display: block;
+  color: #007b3e;
+}
+
+.product p, .goal {
+  font-weight: 600;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 1s ease-out;
+}
+
