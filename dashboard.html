@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard - Oxford Precious Plastic</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 </head>
 <body>
   <header>
-    <a href="index.html"><img src="images/logo.png" alt="Logo" class="logo"></a>
+    <a href="index.html"><img src="images/logo.png" alt="Logo" class="logo" /></a>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -19,24 +20,28 @@
       <a href="dashboard.html" class="active">Dashboard</a>
     </nav>
   </header>
+
   <main>
-    <section id="member-dashboard">
+    <section class="fade-in" id="member-dashboard">
       <h1>Member Dashboard</h1>
+
       <div id="login-section">
         <button onclick="signIn()" class="button">Login with Google</button>
         <button onclick="signOut()" class="button">Sign Out</button>
         <div id="user-info"></div>
       </div>
+
       <div id="private-content" style="display: none;">
-        <h2>Welcome, member!</h2>
+        <h2>Welcome, Member!</h2>
         <ul>
           <li><a href="#">Submit Daily Log (coming soon)</a></li>
-          <li><a href="#">View Instructions</a></li>
-          <li><a href="#">Check Inventory</a></li>
+          <li><a href="#">View Instructions (coming soon)</a></li>
+          <li><a href="#">Check Inventory Sheet (coming soon)</a></li>
         </ul>
       </div>
     </section>
   </main>
+
   <footer>
     <p>
       <a href="https://instagram.com/Oxfordpreciousplastic"><i class="fab fa-instagram"></i> Instagram</a> |
@@ -49,17 +54,23 @@
       apiKey: "AIzaSyB3k7VKpe0bS4HMs7nidPsiZA9_BEzaZV0",
       authDomain: "precious-plastic-e6586.firebaseapp.com",
       projectId: "precious-plastic-e6586",
-      storageBucket: "precious-plastic-e6586.firebasestorage.app",
+      storageBucket: "precious-plastic-e6586.appspot.com",
       messagingSenderId: "816596846839",
       appId: "1:816596846839:web:aa6fa29a920c9c9dce6bf2",
       measurementId: "G-E4RD7C7JQK"
     };
+
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
     function signIn() {
       const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider).catch(console.error);
+      auth.signInWithPopup(provider)
+        .then(result => console.log("Logged in:", result.user))
+        .catch(error => {
+          console.error("Login failed:", error);
+          alert("Login failed: " + error.message);
+        });
     }
 
     function signOut() {
@@ -80,4 +91,3 @@
   </script>
 </body>
 </html>
-
