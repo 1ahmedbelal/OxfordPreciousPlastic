@@ -1,0 +1,157 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #ffffff;
+  color: #1e1e1e;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: #007b3e; /* green */
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 60px;
+}
+
+nav a {
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #ffe600; /* yellow */
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  background-image: url('images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px 60px;
+  border-radius: 12px;
+}
+
+.hero h1 {
+  color: #fff;
+  font-size: 3rem;
+  text-shadow: 1px 1px 4px #000;
+}
+
+/* Sections */
+section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+section h1, section h2, section h3 {
+  margin-bottom: 20px;
+  color: #0047ab; /* charger blue */
+}
+
+/* Cards / Boxes */
+.goals, .products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.goal, .product {
+  flex: 1 1 250px;
+  background-color: #e0f5e0; /* light green tint */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 2px solid #007b3e;
+}
+
+/* Buttons */
+.button {
+  background-color: #0047ab;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #ffe600;
+  color: #0047ab;
+}
+
+/* Footer */
+footer {
+  background-color: #007b3e;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+footer a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+footer a i {
+  margin-right: 8px;
+}
+
+/* Private Content */
+#private-content {
+  display: none;
+  padding: 20px;
+  background-color: #f5f5f5;
+  margin: 40px auto;
+  border-radius: 10px;
+  max-width: 700px;
+}
+
+#user-info {
+  margin-top: 20px;
+}
