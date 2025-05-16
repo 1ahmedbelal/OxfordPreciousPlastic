@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Oxford Precious Plastic</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="images/logo.png" alt="Logo" class="logo"></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="how.html">How It Works</a>
+      <a href="getinvolved.html">Get Involved</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+    </nav>
+  </header>
+  <main>
+    <section id="member-dashboard">
+      <h1>Member Dashboard</h1>
+      <div id="login-section">
+        <button onclick="signIn()" class="button">Login with Google</button>
+        <button onclick="signOut()" class="button">Sign Out</button>
+        <div id="user-info"></div>
+      </div>
+      <div id="private-content" style="display: none;">
+        <h2>Welcome, member!</h2>
+        <ul>
+          <li><a href="#">Submit Daily Log (coming soon)</a></li>
+          <li><a href="#">View Instructions</a></li>
+          <li><a href="#">Check Inventory</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>
+      <a href="https://instagram.com/Oxfordpreciousplastic"><i class="fab fa-instagram"></i> Instagram</a> |
+      <a href="mailto:oxfordpreciousplastic@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+    </p>
+  </footer>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB3k7VKpe0bS4HMs7nidPsiZA9_BEzaZV0",
+      authDomain: "precious-plastic-e6586.firebaseapp.com",
+      projectId: "precious-plastic-e6586",
+      storageBucket: "precious-plastic-e6586.firebasestorage.app",
+      messagingSenderId: "816596846839",
+      appId: "1:816596846839:web:aa6fa29a920c9c9dce6bf2",
+      measurementId: "G-E4RD7C7JQK"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function signIn() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider).catch(console.error);
+    }
+
+    function signOut() {
+      auth.signOut().catch(console.error);
+    }
+
+    auth.onAuthStateChanged(user => {
+      const userInfo = document.getElementById("user-info");
+      const privateContent = document.getElementById("private-content");
+      if (user) {
+        userInfo.innerHTML = `<p>Welcome, ${user.displayName}</p>`;
+        privateContent.style.display = "block";
+      } else {
+        userInfo.innerHTML = "<p>Not logged in.</p>";
+        privateContent.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
 
