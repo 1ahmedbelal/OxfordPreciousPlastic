@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oxford High School Precious Plastic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #333;
+    }
+    header {
+      background-color: #00264d;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header img {
+      height: 40px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background-image: url('images/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 20px;
+      text-align: center;
+      color: #fff;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .goals, .products {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .goal, .product {
+      flex: 1 1 200px;
+      margin: 10px;
+    }
+    .product img {
+      width: 200px;
+      border-radius: 10px;
+    }
+    .footer {
+      background-color: #00264d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .footer a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .button {
+      background-color: #004080;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+      text-decoration: none;
+    }
+    #login-section {
+      text-align: center;
+      margin: 40px auto;
+    }
+    #user-info {
+      margin-top: 20px;
+    }
+    #private-content {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      background-color: #f5f5f5;
+      margin: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Logo">
+    <span><h2 style="display: inline;">OXFORD PRECIOUS PLASTIC</h2></span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#how">How It Works</a>
+      <a href="#getinvolved">Get Involved</a>
+      <a href="#login-section" class="button">Member Login</a>
+    </nav>
+  </header>
+  <div class="hero">
+    <h1>First Precious Plastic Workspace in Mississippi!</h1>
+  </div>
+  <div class="section">
+    <h2>Our Goals</h2>
+    <div class="goals">
+      <div class="goal">Minimize impact</div>
+      <div class="goal">Make durable products</div>
+      <div class="goal">Learn & share</div>
+      <div class="goal">Contribute findings</div>
+    </div>
+  </div>
+  <div class="section" id="projects">
+    <h2>What We Make</h2>
+    <div class="products">
+      <div class="product">
+        <img src="images/bench.jpg" alt="Bench">
+        <p>Benches</p>
+      </div>
+      <div class="product">
+        <img src="images/chair.jpg" alt="Chair">
+        <p>Chair</p>
+      </div>
+    </div>
+  </div>
+  <div class="section" id="login-section">
+    <h2>Member Login</h2>
+    <button onclick="signIn()" class="button">Login with Google</button>
+    <button onclick="signOut()" class="button">Sign Out</button>
+    <div id="user-info"></div>
+  </div>
+  <div id="private-content">
+    <h3>Member Dashboard</h3>
+    <p>Welcome to the internal hub. Submit logs, view instructions, and manage data here soon.</p>
+    <ul>
+      <li><a href="#">Submit Daily Log (coming soon)</a></li>
+      <li><a href="#">View Instructions (coming soon)</a></li>
+      <li><a href="#">Access Inventory Sheet (coming soon)</a></li>
+    </ul>
+  </div>
+  <div class="footer">
+    <p>
+      <a href="https://instagram.com/Oxfordpreciousplastic">@Oxfordpreciousplastic</a> |
+      <a href="mailto:oxfordpreciousplastic@gmail.com">oxfordpreciousplastic@gmail.com</a>
+    </p>
+  </div>
+
+ <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyB3k7VKpe0bS4HMs7nidPsiZA9_BEzaZV0",
+    authDomain: "precious-plastic-e6586.firebaseapp.com",
+    projectId: "precious-plastic-e6586",
+    storageBucket: "precious-plastic-e6586.firebasestorage.app",
+    messagingSenderId: "816596846839",
+    appId: "1:816596846839:web:aa6fa29a920c9c9dce6bf2",
+    measurementId: "G-E4RD7C7JQK"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  function signIn() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+      .then(result => {
+        console.log("Logged in:", result.user);
+      })
+      .catch(error => {
+        console.error("Login failed:", error);
+        alert("Login failed: " + error.message);
+      });
+  }
+
+  function signOut() {
+    auth.signOut().catch(console.error);
+  }
+
+  auth.onAuthStateChanged(user => {
+    const userInfo = document.getElementById("user-info");
+    const privateContent = document.getElementById("private-content");
+    if (user) {
+      userInfo.innerHTML = `<p>Welcome, ${user.displayName}</p>`;
+      privateContent.style.display = "block";
+    } else {
+      userInfo.innerHTML = "<p>Not logged in.</p>";
+      privateContent.style.display = "none";
+    }
+  });
+</script>
+</body>
+</html>
