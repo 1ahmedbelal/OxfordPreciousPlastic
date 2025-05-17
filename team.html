@@ -4,114 +4,105 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Team - Oxford Precious Plastic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/main.css" />
   <style>
-    .team-section {
-      padding: 3rem 1rem;
-      text-align: center;
+    body {
+      background-color: white;
+      font-family: 'Delius', cursive;
     }
-    .team-grid {
+    header {
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+    header img.logo {
+      height: 80px;
+    }
+    .nav-links {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    .team-container {
+      max-width: 1000px;
+      margin: 2rem auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
+      padding: 0 2rem;
     }
-    .team-card {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
+    .member-card {
+      background: #fff;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       padding: 1.5rem;
     }
-    .team-card img {
-      width: 100%;
-      height: 260px;
+    .member-card img {
+      width: 150px;
+      height: 150px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
     }
-    .team-name {
-      margin-top: 1rem;
-      font-weight: bold;
-      font-size: 1.2rem;
+    .member-card h3 {
+      margin: 0.5rem 0 0.2rem;
+      color: #1a3e72;
     }
-    .team-role {
+    .member-card p {
       color: #666;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <nav>
-      <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo" />
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="machines.html">Machines</a>
-        <a href="products.html">Products</a>
-        <a href="team.html" class="active">Team</a>
-        <a href="login.html">Login</a>
-      </div>
-    </nav>
+    <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo" />
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="machines.html">Machines</a>
+      <a href="products.html">Products</a>
+      <a href="academy.html">Academy</a>
+      <a href="team.html" class="active">Team</a>
+    </div>
   </header>
 
-  <main class="team-section">
-    <h1>Meet the Team</h1>
-    <p style="margin-bottom: 2rem">Oxford High School students and mentors powering local plastic recycling</p>
-    <div class="team-grid">
-      <div class="team-card">
+  <main>
+    <section class="team-container">
+      <div class="member-card">
         <img src="images/ahmed.jpg" alt="Ahmed Belal" />
-        <div class="team-name">Ahmed Belal</div>
-        <div class="team-role">Founder & Lead Engineer</div>
+        <h3>Ahmed Belal</h3>
+        <p>Founder & Lead Engineer</p>
       </div>
-      <div class="team-card">
+      <div class="member-card">
         <img src="images/ghaith.jpg" alt="Ghaith Alhusban" />
-        <div class="team-name">Ghaith Alhusban</div>
-        <div class="team-role">Product & Design Specialist</div>
+        <h3>Ghaith Alhusban</h3>
+        <p>Product & Process Designer</p>
       </div>
-      <div class="team-card">
+      <div class="member-card">
         <img src="images/bao.jpg" alt="Bao Nguyen" />
-        <div class="team-name">Bao Nguyen</div>
-        <div class="team-role">Fabrication & Process Manager</div>
+        <h3>Bao Nguyen</h3>
+        <p>Technical Specialist</p>
       </div>
-      <div class="team-card">
+      <div class="member-card">
         <img src="images/charles.jpg" alt="Charles Sabatier" />
-        <div class="team-name">Charles Sabatier</div>
-        <div class="team-role">Mentor & Workspace Director</div>
+        <h3>Charles Sabatier</h3>
+        <p>Mentor & Workspace Manager</p>
       </div>
-    </div>
+    </section>
   </main>
 
   <footer>
-    <div class="container grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-      <div>
-        <h3>About</h3>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="academy.html">Academy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Shop</h3>
-        <ul>
-          <li><a href="products.html">Recycled Products</a></li>
-          <li><a href="machines.html">Machines</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Legal</h3>
-        <p>All Precious Plastic content is shared under Creative Commons Attribution.</p>
-      </div>
-      <div>
-        <h3>Connect</h3>
-        <p>Email: <a href="mailto:oxfordpreciousplastic@gmail.com">oxfordpreciousplastic@gmail.com</a></p>
-        <div>
-          <a href="#"><img src="images/logo.png" alt="Logo" style="height: 40px;" /></a>
-        </div>
-      </div>
-    </div>
-    <p style="margin-top: 2rem">&copy; 2025 Oxford Precious Plastic</p>
+    <p>&copy; 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.</p>
   </footer>
 </body>
 </html>
