@@ -4,96 +4,109 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products - Oxford Precious Plastic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/main.css" />
   <style>
-    .grid {
+    body {
+      background-color: white;
+      font-family: 'Delius', cursive;
+    }
+    header, footer {
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+    header img.logo {
+      height: 80px;
+    }
+    .nav-links {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    .card-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
+    }
+    .card {
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
     }
     .card img {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 200px;
       object-fit: cover;
     }
     .card-content {
       padding: 1.5rem;
     }
+    .card-content h3 {
+      margin-bottom: 0.5rem;
+      color: #1a3e72;
+    }
     .btn {
-      margin-top: 1rem;
       display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #00a651;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <header>
-    <nav>
-      <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo" />
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="machines.html">Machines</a>
-        <a href="products.html" class="active">Products</a>
-        <a href="team.html">Team</a>
-        <a href="login.html">Login</a>
-      </div>
-    </nav>
+    <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo" />
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="machines.html">Machines</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="academy.html">Academy</a>
+      <a href="team.html">Team</a>
+      <a href="cart.html">Cart</a>
+    </div>
   </header>
 
-  <main class="container">
-    <h1>Recycled Products</h1>
-    <p>All items are crafted from locally recycled plastic waste by our student-led team.</p>
-    <div class="grid">
+  <main>
+    <section class="card-container">
       <div class="card">
-        <img src="images/bench.jpg" alt="Bench" />
+        <img src="images/bench.jpg" alt="Recycled Bench" />
         <div class="card-content">
-          <h2>Plastic Bench</h2>
-          <p>Heavy-duty bench made entirely from #5 PP plastic beams.</p>
+          <h3>Recycled Bench</h3>
+          <p>Durable bench made from 100% locally collected polypropylene plastic.</p>
           <a href="#" class="btn">Buy</a>
         </div>
       </div>
       <div class="card">
-        <img src="images/chair.jpg" alt="Chair" />
+        <img src="images/chair.jpg" alt="Recycled Chair" />
         <div class="card-content">
-          <h2>Recycled Chair</h2>
-          <p>Durable recycled plastic seating, reinforced with local wood.</p>
+          <h3>Recycled Chair</h3>
+          <p>Outdoor chair designed with recycled materials and sustainable design.</p>
           <a href="#" class="btn">Buy</a>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <footer>
-    <div class="container grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-      <div>
-        <h3>About</h3>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="academy.html">Academy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Shop</h3>
-        <ul>
-          <li><a href="products.html">Recycled Products</a></li>
-          <li><a href="machines.html">Machines</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Legal</h3>
-        <p>All Precious Plastic content is shared under Creative Commons Attribution.</p>
-      </div>
-      <div>
-        <h3>Connect</h3>
-        <p>Email: <a href="mailto:oxfordpreciousplastic@gmail.com">oxfordpreciousplastic@gmail.com</a></p>
-        <div>
-          <a href="#"><img src="images/logo.png" alt="Logo" style="height: 40px;" /></a>
-        </div>
-      </div>
-    </div>
-    <p style="margin-top: 2rem">&copy; 2025 Oxford Precious Plastic</p>
+    <p>&copy; 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.</p>
   </footer>
 </body>
 </html>
