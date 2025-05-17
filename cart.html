@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Oxford Precious Plastic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    body {
+      font-family: 'Delius', cursive;
+      background: white;
+      color: #2c3e50;
+      padding: 2rem;
+    }
+    header {
+      text-align: center;
+    }
+    header img.logo {
+      height: 80px;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .cart-container {
+      max-width: 800px;
+      margin: 3rem auto;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    .cart-item img {
+      height: 80px;
+      border-radius: 6px;
+    }
+    .cart-summary {
+      margin-top: 2rem;
+      text-align: right;
+    }
+    .btn {
+      padding: 0.8rem 1.5rem;
+      background: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="login.html"><img src="images/login-icon.png" alt="Login" style="height: 20px; vertical-align: middle;"></a>
+      <a href="cart.html"><img src="images/cart-icon.png" alt="Cart" style="height: 20px; vertical-align: middle;"></a>
+    </div>
+  </header>
+
+  <main class="cart-container">
+    <h1>Your Cart</h1>
+    <div class="cart-item">
+      <div>
+        <strong>Plastic Bench</strong><br>
+        Quantity: 1
+      </div>
+      <img src="images/bench.jpg" alt="Bench">
+    </div>
+    <div class="cart-item">
+      <div>
+        <strong>Recycled Chair</strong><br>
+        Quantity: 1
+      </div>
+      <img src="images/chair.jpg" alt="Chair">
+    </div>
+    <div class="cart-summary">
+      <p><strong>Total: $150</strong></p>
+      <button class="btn">Checkout</button>
+    </div>
+  </main>
+</body>
+</html>
