@@ -1,190 +1,95 @@
-/* GLOBAL RESET */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Oxford Precious Plastic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="images/logo.png" alt="Logo" class="logo" /></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="how.html">How It Works</a>
+      <a href="getinvolved.html">Get Involved</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+    </nav>
+  </header>
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background: #ffffff;
-  color: #1e1e1e;
-  line-height: 1.6;
-}
+  <main>
+    <section class="fade-in" id="member-dashboard">
+      <h1>Member Dashboard</h1>
+      <p>Login with your school account to access instructions, logs, and materials.</p>
 
-/* HEADER */
-header {
-  background-color: #007b3e;
-  color: #fff;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+      <div id="login-section">
+        <button onclick="signIn()" class="button">Login with Google</button>
+        <button onclick="signOut()" class="button">Sign Out</button>
+        <div id="user-info"></div>
+      </div>
 
-.logo {
-  height: 60px;
-}
+      <div id="private-content">
+        <h2>Welcome, Member!</h2>
+        <ul>
+          <li><a href="#">📘 Submit Daily Log (coming soon)</a></li>
+          <li><a href="#">🔧 View Machine Instructions</a></li>
+          <li><a href="#">📦 Check Inventory</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-nav a {
-  margin: 0 10px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
+  <footer>
+    <p>
+      <a href="https://instagram.com/Oxfordpreciousplastic"><i class="fab fa-instagram"></i> Instagram</a> |
+      <a href="mailto:oxfordpreciousplastic@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+    </p>
+  </footer>
 
-nav a:hover,
-nav a.active {
-  color: #ffe600;
-}
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB3k7VKpe0bS4HMs7nidPsiZA9_BEzaZV0",
+      authDomain: "precious-plastic-e6586.firebaseapp.com",
+      projectId: "precious-plastic-e6586",
+      storageBucket: "precious-plastic-e6586.appspot.com",
+      messagingSenderId: "816596846839",
+      appId: "1:816596846839:web:aa6fa29a920c9c9dce6bf2",
+      measurementId: "G-E4RD7C7JQK"
+    };
 
-/* HERO */
-.hero {
-  position: relative;
-  background-image: url('images/hero.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
-.hero-overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 40px 60px;
-  border-radius: 12px;
-  animation: fadeIn 1.5s ease-in-out;
-}
+    function signIn() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(result => console.log("Logged in:", result.user))
+        .catch(error => {
+          console.error("Login failed:", error);
+          alert("Login failed: " + error.message);
+        });
+    }
 
-.hero h1 {
-  color: #fff;
-  font-size: 3rem;
-  text-shadow: 1px 1px 4px #000;
-}
+    function signOut() {
+      auth.signOut().catch(console.error);
+    }
 
-/* SECTION */
-section {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: auto;
-  text-align: center;
-}
-
-section h1, section h2, section h3 {
-  margin-bottom: 20px;
-  color: #0047ab;
-}
-
-/* GOALS & PRODUCTS */
-.goals, .products {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.goal, .product {
-  flex: 1 1 250px;
-  background-color: #e0f5e0;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.product img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  border: 2px solid #007b3e;
-}
-
-.product:hover, .goal:hover {
-  transform: scale(1.05);
-}
-
-/* BUTTONS */
-.button {
-  background-color: #0047ab;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 20px;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-
-.button:hover {
-  background-color: #ffe600;
-  color: #0047ab;
-}
-
-/* FOOTER */
-footer {
-  background-color: #007b3e;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-}
-
-footer a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
-
-footer a i {
-  margin-right: 8px;
-}
-
-/* ANIMATIONS */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-  animation: fadeIn 1s ease forwards;
-}
-
-.fade-in-up {
-  animation: fadeIn 1.3s ease-out;
-}
-.subtitle {
-  font-size: 1.3rem;
-  margin: 10px 0 20px;
-  color: #eee;
-}
-
-.goal i {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  display: block;
-  color: #007b3e;
-}
-
-.product p, .goal {
-  font-weight: 600;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in-up {
-  animation: fadeInUp 1s ease-out;
-}
-
+    auth.onAuthStateChanged(user => {
+      const userInfo = document.getElementById("user-info");
+      const privateContent = document.getElementById("private-content");
+      if (user) {
+        userInfo.innerHTML = `<p>Welcome, ${user.displayName}</p>`;
+        privateContent.style.display = "block";
+      } else {
+        userInfo.innerHTML = "<p>Not logged in.</p>";
+        privateContent.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
