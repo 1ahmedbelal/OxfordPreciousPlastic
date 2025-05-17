@@ -5,49 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login | Oxford Precious Plastic</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css">
   <script type="module" src="scripts/auth.js"></script>
 </head>
-<body>
-  <header>
-    <nav>
-      <img src="images/logo.svg" alt="Oxford Precious Plastic" class="logo">
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="machines.html">Machines</a>
-        <a href="products.html">Products</a>
-        <a href="team.html">Team</a>
-      </div>
-    </nav>
-  </header>
-
-  <main class="container" style="max-width: 500px;">
-    <div class="card">
-      <div class="card-content">
+<body class="login-page">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <img src="images/logo.png" alt="Oxford Precious Plastic" class="login-logo">
         <h1>Workspace Login</h1>
-        <p>Access the Oxford Precious Plastic dashboard to log activities and view statistics.</p>
+        <p>Access the Oxford Precious Plastic dashboard</p>
+      </div>
+      
+      <div id="firebaseui-auth-container"></div>
+      
+      <div class="login-divider">
+        <span>OR</span>
+      </div>
+      
+      <form id="emailLoginForm" class="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="your@email.com">
+        </div>
         
-        <form id="loginForm">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" required>
-          </div>
-          
-          <div id="errorMessage" style="color: var(--warning); display: none; margin-bottom: 1rem;"></div>
-          
-          <button type="submit" class="btn" style="width: 100%;">Login</button>
-        </form>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required placeholder="••••••••">
+        </div>
+        
+        <div id="loginError" class="error-message"></div>
+        
+        <button type="submit" class="btn btn-login">Sign In</button>
+      </form>
+      
+      <div class="login-footer">
+        <p>Need access? <a href="mailto:oxfordpreciousplastic@gmail.com">Contact the team</a></p>
       </div>
     </div>
-  </main>
-
-  <footer>
-    <p>&copy; 2023 Oxford Precious Plastic. Restricted access for workspace members only.</p>
-  </footer>
+  </div>
 </body>
 </html>
