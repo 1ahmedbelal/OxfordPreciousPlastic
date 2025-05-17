@@ -1,132 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard | Oxford Precious Plastic</title>
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/dashboard.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script type="module" src="scripts/dashboard.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Oxford Precious Plastic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/dashboard.css" />
+  <script type="module" src="scripts/dashboard.js" defer></script>
+  <script>
+    const userLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+    if (!userLoggedIn) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: 'Delius', cursive;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+    header img.logo {
+      height: 80px;
+    }
+    .nav-links {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    .nav-icons {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      display: flex;
+      gap: 1rem;
+    }
+    .nav-icons img {
+      height: 24px;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body class="dashboard-page">
+<body>
   <header>
-    <nav>
-      <a href="index.html"><img src="../images/logo.png" alt="Oxford Precious Plastic" class="logo"></a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="dashboard.html" class="active">Dashboard</a>
-        <a href="machines.html">Machines</a>
-        <a href="products.html">Products</a>
-        <a href="team.html">Team</a>
-        <a href="#" id="logoutBtn">Logout</a>
-      </div>
-    </nav>
+    <div class="nav-icons">
+      <a href="login.html"><img src="images/login-icon.png" alt="Login" /></a>
+      <a href="cart.html"><img src="images/cart-icon.png" alt="Cart" /></a>
+    </div>
+    <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo" />
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="machines.html">Machines</a>
+      <a href="products.html">Products</a>
+      <a href="academy.html">Academy</a>
+      <a href="team.html">Team</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+    </div>
   </header>
 
-  <main class="dashboard-container">
-    <div class="dashboard-sidebar">
-      <h3>Workspace Tools</h3>
-      <ul>
-        <li><a href="#" class="active"><i class="fas fa-chart-line"></i> Overview</a></li>
-        <li><a href="#"><i class="fas fa-recycle"></i> Plastic Log</a></li>
-        <li><a href="#"><i class="fas fa-cubes"></i> Product Tracker</a></li>
-        <li><a href="#"><i class="fas fa-users"></i> Team Management</a></li>
-        <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-      </ul>
-    </div>
-    
-    <div class="dashboard-content">
-      <h1>Workspace Dashboard</h1>
-      
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fas fa-weight-hanging"></i>
-          </div>
-          <div class="stat-info">
-            <h3>Plastic Processed</h3>
-            <p class="stat-value" id="totalPlastic">127.5 kg</p>
-          </div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fas fa-cube"></i>
-          </div>
-          <div class="stat-info">
-            <h3>Products Created</h3>
-            <p class="stat-value" id="totalProducts">42</p>
-          </div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <div class="stat-info">
-            <h3>Team Members</h3>
-            <p class="stat-value" id="teamMembers">19</p>
-          </div>
-        </div>
+  <main class="container">
+    <h1>Workspace Dashboard</h1>
+
+    <div class="dashboard-grid">
+      <div class="stats-card">
+        <h2>Plastic Processed</h2>
+        <div class="stat-value" id="totalPlastic">0 kg</div>
       </div>
-      
-      <div class="dashboard-section">
-        <h2>Recent Activities</h2>
-        <div class="activity-log" id="activityLog">
-          <!-- Activities will be loaded here -->
-        </div>
+      <div class="stats-card">
+        <h2>Products Created</h2>
+        <div class="stat-value" id="totalProducts">0</div>
       </div>
-      
-      <div class="dashboard-section">
-        <h2>Quick Log</h2>
-        <form id="quickLogForm" class="log-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="logType">Activity Type</label>
-              <select id="logType" required>
-                <option value="">Select activity</option>
-                <option value="shredding">Shredding</option>
-                <option value="extrusion">Extrusion</option>
-                <option value="injection">Injection Molding</option>
-                <option value="product">Product Creation</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="logPlastic">Plastic Type</label>
-              <select id="logPlastic">
-                <option value="">Select plastic</option>
-                <option value="PP">#5 - PP (Polypropylene)</option>
-                <option value="HDPE">#2 - HDPE</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
+      <div class="stats-card">
+        <h2>Team Members</h2>
+        <div class="stat-value" id="teamMembers">0</div>
+      </div>
+
+      <div class="form-card">
+        <h2>Log New Activity</h2>
+        <form id="activityForm">
+          <div class="form-group">
+            <label for="activityType">Activity Type</label>
+            <select id="activityType" required>
+              <option value="">Select activity</option>
+              <option value="shredding">Shredding</option>
+              <option value="extrusion">Extrusion</option>
+              <option value="injection">Injection Molding</option>
+              <option value="product">Product Creation</option>
+              <option value="maintenance">Machine Maintenance</option>
+            </select>
           </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label for="logAmount">Amount (kg)</label>
-              <input type="number" id="logAmount" step="0.1" min="0">
-            </div>
-            
-            <div class="form-group">
-              <label for="logNotes">Notes</label>
-              <input type="text" id="logNotes" placeholder="Optional notes">
-            </div>
+
+          <div class="form-group">
+            <label for="plasticType">Plastic Type</label>
+            <select id="plasticType">
+              <option value="">Select plastic</option>
+              <option value="PP">#5 - PP (Polypropylene)</option>
+              <option value="HDPE">#2 - HDPE</option>
+              <option value="other">Other</option>
+            </select>
           </div>
-          
-          <button type="submit" class="btn btn-log">Log Activity</button>
+
+          <div class="form-group">
+            <label for="plasticAmount">Amount (kg)</label>
+            <input type="number" id="plasticAmount" step="0.1" min="0" />
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" rows="3"></textarea>
+          </div>
+
+          <button type="submit" class="btn">Log Activity</button>
         </form>
+      </div>
+
+      <div class="activity-card">
+        <h2>Recent Activities</h2>
+        <div class="activity-feed" id="activityFeed"></div>
+      </div>
+
+      <div class="chart-card">
+        <h2>Plastic Processing</h2>
+        <canvas id="plasticChart"></canvas>
+      </div>
+
+      <div class="chart-card">
+        <h2>Product Output</h2>
+        <canvas id="productChart"></canvas>
       </div>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-bottom">
-      <p>&copy; 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.</p>
-    </div>
-  </footer>
-</body>
-</html>
+  <footer style="background-color: white; padding: 3rem 1rem; border-top: 1px solid #eee;">
+    <div class="container grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem;">
+      <div>
+        <h3>About</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Impact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="#">Machines</a></li>
+          <li><a href="#">Recycled Products</a></li>
+          <li><a href="#">Parts & Equipment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>More</h3>
+        <ul>
+          <li><a href="#">Product Support</a></li>
+          <li><a href="#">Reuse Program</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <p>Email: <a href=\"mailto:oxfordpreciousplastic@gmail.com\">oxfordpreciousplastic@gmail.com</a></p>
+        <div style=\"display: flex; gap: 0.5rem; margin-top: 0.5rem;\">\n          <a href=\"#\"><img src=\"images/logo.png\" alt=\"Logo\" style=\"height: 40px;\" /></a>\n        </div>\n      </div>\n    </div>\n    <p style=\"text-align: center; margin-top: 2rem; font-size: 0.85rem; color: #888;\">\n      © 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.\n    </p>\n  </footer>\n</body>\n</html>\n"
+}
