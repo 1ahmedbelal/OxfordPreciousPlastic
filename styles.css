@@ -3,46 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard - Oxford Precious Plastic</title>
+  <title>Oxford Precious Plastic</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
     <a href="index.html"><img src="images/logo.png" alt="Logo" class="logo" /></a>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="how.html">How It Works</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="machines.html">Machines</a>
+      <a href="products.html">Products</a>
+      <a href="process.html">Process</a>
+      <a href="academy.html">Academy</a>
       <a href="getinvolved.html">Get Involved</a>
-      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="dashboard.html">Dashboard</a>
     </nav>
   </header>
 
-  <main>
-    <section class="fade-in" id="member-dashboard">
-      <h1>Member Dashboard</h1>
-      <p>Login with your school account to access instructions, logs, and materials.</p>
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1>Welcome to Oxford Precious Plastic</h1>
+      <p class="subtitle">Mississippi’s first student-led plastic recycling lab</p>
+      <a href="getinvolved.html" class="button">Join the Movement</a>
+    </div>
+  </section>
 
-      <div id="login-section">
-        <button onclick="signIn()" class="button">Login with Google</button>
-        <button onclick="signOut()" class="button">Sign Out</button>
-        <div id="user-info"></div>
-      </div>
+  <section class="fade-in">
+    <h2>Our Mission</h2>
+    <p>
+      We collect, shred, and transform local #5 polypropylene waste into durable, meaningful products for the community.
+      From park benches to classroom chairs, we give new life to old plastic — one beam at a time.
+    </p>
+  </section>
 
-      <div id="private-content">
-        <h2>Welcome, Member!</h2>
-        <ul>
-          <li><a href="#">📘 Submit Daily Log (coming soon)</a></li>
-          <li><a href="#">🔧 View Machine Instructions</a></li>
-          <li><a href="#">📦 Check Inventory</a></li>
-        </ul>
+  <section class="fade-in-up">
+    <h2>Our Machines</h2>
+    <div class="goals">
+      <div class="goal"><i class="fas fa-industry"></i> Extruder</div>
+      <div class="goal"><i class="fas fa-blender"></i> Shredder</div>
+      <div class="goal"><i class="fas fa-tools"></i> Injector</div>
+      <div class="goal"><i class="fas fa-cogs"></i> Mold System</div>
+    </div>
+    <p><a href="machines.html" class="button">Explore Machines</a></p>
+  </section>
+
+  <section class="fade-in">
+    <h2>What We Make</h2>
+    <p>Durable furniture, recycled beams, frames and more. Designed and made by students, from plastic that would’ve been trash.</p>
+    <div class="products">
+      <div class="product">
+        <img src="images/bench.jpg" alt="Bench">
+        <p>Benches</p>
       </div>
-    </section>
-  </main>
+      <div class="product">
+        <img src="images/chair.jpg" alt="Chair">
+        <p>Chairs</p>
+      </div>
+    </div>
+    <p><a href="products.html" class="button">See More Products</a></p>
+  </section>
+
+  <section class="fade-in-up">
+    <h2>How It Works</h2>
+    <p>
+      Our engineering design process includes research, prototyping, plastic processing, and product testing — all while tracking data and documenting every step.
+    </p>
+    <p><a href="process.html" class="button">View Our Process</a></p>
+  </section>
+
+  <section class="fade-in">
+    <h2>Want to Help?</h2>
+    <p>We’re growing — and we need your help. Whether it’s cups, time, or support… we’d love to have you on board.</p>
+    <a href="getinvolved.html" class="button">Get Involved</a>
+  </section>
 
   <footer>
     <p>
@@ -50,46 +85,6 @@
       <a href="mailto:oxfordpreciousplastic@gmail.com"><i class="fas fa-envelope"></i> Email</a>
     </p>
   </footer>
-
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyB3k7VKpe0bS4HMs7nidPsiZA9_BEzaZV0",
-      authDomain: "precious-plastic-e6586.firebaseapp.com",
-      projectId: "precious-plastic-e6586",
-      storageBucket: "precious-plastic-e6586.appspot.com",
-      messagingSenderId: "816596846839",
-      appId: "1:816596846839:web:aa6fa29a920c9c9dce6bf2",
-      measurementId: "G-E4RD7C7JQK"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    function signIn() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider)
-        .then(result => console.log("Logged in:", result.user))
-        .catch(error => {
-          console.error("Login failed:", error);
-          alert("Login failed: " + error.message);
-        });
-    }
-
-    function signOut() {
-      auth.signOut().catch(console.error);
-    }
-
-    auth.onAuthStateChanged(user => {
-      const userInfo = document.getElementById("user-info");
-      const privateContent = document.getElementById("private-content");
-      if (user) {
-        userInfo.innerHTML = `<p>Welcome, ${user.displayName}</p>`;
-        privateContent.style.display = "block";
-      } else {
-        userInfo.innerHTML = "<p>Not logged in.</p>";
-        privateContent.style.display = "none";
-      }
-    });
-  </script>
 </body>
 </html>
+
