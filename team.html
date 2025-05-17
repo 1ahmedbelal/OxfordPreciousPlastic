@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Team | Oxford Precious Plastic</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/team.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
     <nav>
-      <img src="images/logo.svg" alt="Oxford Precious Plastic" class="logo">
+      <a href="index.html"><img src="images/logo.png" alt="Oxford Precious Plastic" class="logo"></a>
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html" id="dashboardLink">Dashboard</a>
         <a href="machines.html">Machines</a>
         <a href="products.html">Products</a>
         <a href="team.html" class="active">Team</a>
@@ -21,44 +24,88 @@
     </nav>
   </header>
 
-  <main class="container">
-    <h1>Our Team</h1>
+  <main class="team-container">
+    <section class="team-intro">
+      <h1>Meet Our Team</h1>
+      <p>High school students from Oxford, Mississippi leading the plastic recycling revolution</p>
+    </section>
     
-    <div class="grid">
-      <div class="card">
-        <div class="card-content">
-          <h2>Student Leaders</h2>
-          <p>Our team consists of 19 University of Mississippi students from engineering, environmental science, and design disciplines.</p>
-          <p>Meet the core team:</p>
-          <ul>
-            <li><strong>Ahmed Belal</strong> - Project Lead</li>
-            <li><strong>Oliver Smith</strong> - Machine Operations</li>
-            <li><strong>Emma Johnson</strong> - Product Design</li>
-            <li><strong>Michael Chen</strong> - Community Outreach</li>
-          </ul>
+    <section class="team-members">
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="images/ahmed.jpg" alt="Ahmed Belal">
+          </div>
+          <div class="team-info">
+            <h3>Ahmed Belal</h3>
+            <p class="team-role">Project Lead</p>
+            <p class="team-bio">Oversees all operations and coordinates team efforts</p>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="images/ghaith.jpg" alt="Ghaith Alhusban">
+          </div>
+          <div class="team-info">
+            <h3>Ghaith Alhusban</h3>
+            <p class="team-role">Machine Specialist</p>
+            <p class="team-bio">Maintains and operates all recycling equipment</p>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="images/bao.jpg" alt="Bao Nguyen">
+          </div>
+          <div class="team-info">
+            <h3>Bao Nguyen</h3>
+            <p class="team-role">Product Designer</p>
+            <p class="team-bio">Creates functional designs from recycled materials</p>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="images/charles.jpg" alt="Charles Sabatier">
+          </div>
+          <div class="team-info">
+            <h3>Charles Sabatier</h3>
+            <p class="team-role">Workspace Manager</p>
+            <p class="team-bio">Mentor and advisor for the student team</p>
+          </div>
         </div>
       </div>
-      
-      <div class="card">
-        <div class="card-content">
-          <h2>Faculty Advisors</h2>
-          <ul>
-            <li><strong>Dr. Sarah Williams</strong> - Materials Engineering</li>
-            <li><strong>Prof. James Wilson</strong> - Environmental Science</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    </section>
     
-    <section>
+    <section class="join-team">
       <h2>Join Our Team</h2>
-      <p>We welcome new members from the University of Mississippi community. No prior experience required - we provide full training.</p>
-      <a href="getinvolved.html" class="btn">Apply to Join</a>
+      <p>We welcome new members from Oxford High School. No experience required - we provide full training!</p>
+      <a href="getinvolved.html" class="btn">Apply Now</a>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2023 Oxford Precious Plastic. First Precious Plastic workspace in Mississippi.</p>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Oxford Precious Plastic" class="footer-logo-img">
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="machines.html">Machines</a>
+        <a href="products.html">Products</a>
+        <a href="team.html">Team</a>
+        <a href="getinvolved.html">Get Involved</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/oxfordpreciousplastic" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com/oxfordpreciousplastic" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="mailto:oxfordpreciousplastic@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.</p>
+    </div>
   </footer>
 </body>
 </html>
