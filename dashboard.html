@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard - Oxford Precious Plastic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
@@ -24,6 +25,7 @@
   <main>
     <section class="fade-in" id="member-dashboard">
       <h1>Member Dashboard</h1>
+      <p>Login with your school account to access instructions, logs, and materials.</p>
 
       <div id="login-section">
         <button onclick="signIn()" class="button">Login with Google</button>
@@ -31,12 +33,12 @@
         <div id="user-info"></div>
       </div>
 
-      <div id="private-content" style="display: none;">
+      <div id="private-content">
         <h2>Welcome, Member!</h2>
         <ul>
-          <li><a href="#">Submit Daily Log (coming soon)</a></li>
-          <li><a href="#">View Instructions (coming soon)</a></li>
-          <li><a href="#">Check Inventory Sheet (coming soon)</a></li>
+          <li><a href="#">📘 Submit Daily Log (coming soon)</a></li>
+          <li><a href="#">🔧 View Machine Instructions</a></li>
+          <li><a href="#">📦 Check Inventory</a></li>
         </ul>
       </div>
     </section>
