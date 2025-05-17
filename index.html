@@ -1,368 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oxford Precious Plastic | Revolutionizing Plastic Waste in Mississippi</title>
-  <meta name="description" content="Mississippi's pioneering student-led plastic recycling initiative transforming #5 polypropylene waste into sustainable community solutions">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oxford Precious Plastic</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script type="module" src="scripts/auth.js"></script>
 </head>
 <body>
-  <div class="announcement-bar">
-    <p>♻️ Now accepting #5 PP plastic donations from Oxford community - <a href="getinvolved.html">Learn how to contribute</a></p>
-  </div>
-  
-  <header class="sticky-header">
-    <div class="header-container">
-      <a href="index.html" class="logo-link">
-        <img src="images/logo-full.svg" alt="Oxford Precious Plastic" class="logo" width="220">
-      </a>
-      
-      <nav class="main-nav">
-        <ul>
-          <li><a href="about.html">Our Story</a></li>
-          <li class="dropdown">
-            <a href="machines.html">Machinery <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-              <a href="extruder.html">Extrusion Machine</a>
-              <a href="shredder.html">Shredder</a>
-              <a href="injection.html">Injection Molder</a>
-              <a href="compression.html">Compression System</a>
-            </div>
-          </li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="academy.html">Academy</a></li>
-          <li><a href="getinvolved.html" class="nav-cta">Get Involved</a></li>
-        </ul>
-      </nav>
-      
-      <div class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
+  <header>
+    <nav>
+      <img src="images/logo.svg" alt="Oxford Precious Plastic" class="logo">
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="machines.html">Machines</a>
+        <a href="products.html">Products</a>
+        <a href="team.html">Team</a>
+        <a href="login.html" id="loginBtn">Login</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main>
-    <section class="hero-video">
-      <div class="video-overlay"></div>
-      <video autoplay muted loop playsinline>
-        <source src="videos/plastic-process.mp4" type="video/mp4">
-      </video>
-      <div class="hero-content">
-        <h1>Redesigning Plastic's Future</h1>
-        <p class="subtitle">Mississippi's first open-source, student-run plastic recycling laboratory</p>
-        <div class="hero-buttons">
-          <a href="getinvolved.html" class="button primary">Join the Movement</a>
-          <a href="#mission" class="button secondary">Learn More</a>
-        </div>
-      </div>
-    </section>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Transforming Plastic Waste in Mississippi</h1>
+      <p>Student-led initiative creating durable products from recycled plastics</p>
+      <a href="getinvolved.html" class="btn">Get Involved</a>
+    </div>
+  </section>
 
-    <section id="mission" class="mission-section">
-      <div class="container">
-        <div class="mission-content">
-          <h2>Our Radical Mission</h2>
-          <p class="lead">We're dismantling the plastic waste crisis through open-source technology, education, and community empowerment.</p>
-          <div class="mission-stats">
-            <div class="stat">
-              <div class="stat-number" data-count="1270">0</div>
-              <div class="stat-label">Pounds Recycled</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number" data-count="42">0</div>
-              <div class="stat-label">Community Products</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number" data-count="19">0</div>
-              <div class="stat-label">Student Researchers</div>
-            </div>
-          </div>
-        </div>
-        <div class="mission-image">
-          <img src="images/plastic-waste-pile.jpg" alt="Plastic waste being sorted" loading="lazy">
-        </div>
-      </div>
-    </section>
-
-    <section class="process-section">
-      <div class="section-header">
-        <h2>The Plastic Transformation Process</h2>
-        <p>From waste to wonder in four revolutionary steps</p>
-      </div>
+  <main class="container">
+    <section>
+      <h2>Our Mission</h2>
+      <p>We collect, shred, and transform local plastic waste into durable, meaningful products for our community while advancing plastic recycling knowledge.</p>
       
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-number">1</div>
-          <i class="fas fa-recycle step-icon"></i>
-          <h3>Collection & Sorting</h3>
-          <p>Community-sourced #5 polypropylene rigorously cleaned and prepared</p>
-        </div>
-        
-        <div class="process-step">
-          <div class="step-number">2</div>
-          <i class="fas fa-cut step-icon"></i>
-          <h3>Shredding</h3>
-          <p>Plastic waste reduced to uniform flakes for consistent processing</p>
-        </div>
-        
-        <div class="process-step">
-          <div class="step-number">3</div>
-          <i class="fas fa-fire step-icon"></i>
-          <h3>Extrusion</h3>
-          <p>Flakes melted and formed into durable beams or custom shapes</p>
-        </div>
-        
-        <div class="process-step">
-          <div class="step-number">4</div>
-          <i class="fas fa-hammer step-icon"></i>
-          <h3>Fabrication</h3>
-          <p>Transformed into functional products for campus and community</p>
-        </div>
-      </div>
-      
-      <div class="process-cta">
-        <a href="process.html" class="button outline">Explore Our Detailed Process</a>
-      </div>
-    </section>
-
-    <section class="machines-section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Open-Source Recycling Machinery</h2>
-          <p>Built by students, for the planet</p>
-        </div>
-        
-        <div class="machine-cards">
-          <div class="machine-card">
-            <div class="machine-image">
-              <img src="images/extruder-machine.jpg" alt="Extrusion Machine" loading="lazy">
-            </div>
-            <div class="machine-info">
-              <h3>Extrusion System</h3>
-              <p>Transforms shredded plastic into continuous beams, sheets, or filaments</p>
-              <ul class="machine-specs">
-                <li><i class="fas fa-bolt"></i> 1500W heating elements</li>
-                <li><i class="fas fa-tachometer-alt"></i> 1kg/hour capacity</li>
-                <li><i class="fas fa-ruler-combined"></i> Adjustable die sizes</li>
-              </ul>
-              <a href="extruder.html" class="button small">Technical Details</a>
-            </div>
-          </div>
-          
-          <div class="machine-card">
-            <div class="machine-image">
-              <img src="images/shredder-machine.jpg" alt="Industrial Shredder" loading="lazy">
-            </div>
-            <div class="machine-info">
-              <h3>Industrial Shredder</h3>
-              <p>Reduces plastic waste to consistent 8-10mm flakes for processing</p>
-              <ul class="machine-specs">
-                <li><i class="fas fa-horse-head"></i> 3HP electric motor</li>
-                <li><i class="fas fa-shield-alt"></i> Safety interlock system</li>
-                <li><i class="fas fa-weight-hanging"></i> 15kg/hour capacity</li>
-              </ul>
-              <a href="shredder.html" class="button small">Technical Details</a>
-            </div>
+      <div class="grid">
+        <div class="card">
+          <img src="images/bench.jpg" alt="Recycled Bench">
+          <div class="card-content">
+            <h3>Community Benches</h3>
+            <p>Durable outdoor seating made from recycled #5 polypropylene</p>
+            <a href="products.html" class="btn">See Products</a>
           </div>
         </div>
         
-        <div class="machines-cta">
-          <a href="machines.html" class="button primary">View All Machines</a>
-          <a href="https://preciousplastic.com" class="button outline" target="_blank">Original Precious Plastic Designs</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="products-section">
-      <div class="section-header">
-        <h2>Products With Purpose</h2>
-        <p>Functional designs from what was once waste</p>
-      </div>
-      
-      <div class="product-gallery">
-        <div class="product-card">
-          <div class="product-image">
-            <img src="images/classroom-chair.jpg" alt="Recycled Plastic Chair" loading="lazy">
-            <div class="product-badge">Bestseller</div>
-          </div>
-          <div class="product-details">
-            <h3>Scholar Chair</h3>
-            <p class="product-desc">Ergonomic classroom seating from 100% recycled PP</p>
-            <div class="product-meta">
-              <span class="product-plastic"><i class="fas fa-recycle"></i> ~250 plastic cups</span>
-              <span class="product-weight"><i class="fas fa-weight-hanging"></i> 4.2kg</span>
-            </div>
-            <a href="chair-product.html" class="button small">View Project</a>
-          </div>
-        </div>
-        
-        <div class="product-card">
-          <div class="product-image">
-            <img src="images/garden-planter.jpg" alt="Recycled Plastic Planter" loading="lazy">
-          </div>
-          <div class="product-details">
-            <h3>Garden Planter</h3>
-            <p class="product-desc">UV-resistant planters for campus green spaces</p>
-            <div class="product-meta">
-              <span class="product-plastic"><i class="fas fa-recycle"></i> ~180 plastic containers</span>
-              <span class="product-weight"><i class="fas fa-weight-hanging"></i> 3.1kg</span>
-            </div>
-            <a href="planter-product.html" class="button small">View Project</a>
-          </div>
-        </div>
-        
-        <div class="product-card">
-          <div class="product-image">
-            <img src="images/library-shelf.jpg" alt="Recycled Plastic Shelf" loading="lazy">
-            <div class="product-badge">New</div>
-          </div>
-          <div class="product-details">
-            <h3>Library Shelf</h3>
-            <p class="product-desc">Structural shelving from post-consumer waste</p>
-            <div class="product-meta">
-              <span class="product-plastic"><i class="fas fa-recycle"></i> ~600 plastic items</span>
-              <span class="product-weight"><i class="fas fa-weight-hanging"></i> 8.7kg</span>
-            </div>
-            <a href="shelf-product.html" class="button small">View Project</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="products-cta">
-        <a href="products.html" class="button primary">Explore Full Product Line</a>
-        <a href="custom-orders.html" class="button outline">Request Custom Project</a>
-      </div>
-    </section>
-
-    <section class="education-section">
-      <div class="container">
-        <div class="education-content">
-          <h2>Plastic Education Initiative</h2>
-          <p class="lead">We're not just recycling plastic—we're transforming how Mississippi thinks about waste.</p>
-          <p>Our academy provides hands-on workshops, K-12 outreach programs, and university-level research opportunities in sustainable materials engineering.</p>
-          
-          <div class="education-features">
-            <div class="feature">
-              <i class="fas fa-graduation-cap"></i>
-              <h4>Student Training</h4>
-              <p>Comprehensive machine operation and safety certification</p>
-            </div>
-            <div class="feature">
-              <i class="fas fa-chalkboard-teacher"></i>
-              <h4>Teacher Resources</h4>
-              <p>STEM curriculum packages for local schools</p>
-            </div>
-            <div class="feature">
-              <i class="fas fa-flask"></i>
-              <h4>Research</h4>
-              <p>Material science innovation with recycled polymers</p>
-            </div>
-          </div>
-          
-          <a href="academy.html" class="button primary">Learn About Our Programs</a>
-        </div>
-        
-        <div class="education-image">
-          <img src="images/student-workshop.jpg" alt="Students working with recycling machines" loading="lazy">
-          <div class="image-caption">High school interns learning extrusion techniques</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-section">
-      <div class="cta-container">
-        <div class="cta-content">
-          <h2>Ready to Transform Plastic With Us?</h2>
-          <p>Whether you're a student, community member, or business—there's a place for you in our plastic revolution.</p>
-          
-          <div class="cta-options">
-            <div class="cta-option">
-              <i class="fas fa-hands-helping"></i>
-              <h4>Volunteer</h4>
-              <p>Join our team of plastic pioneers</p>
-              <a href="volunteer.html" class="button small">Sign Up</a>
-            </div>
-            
-            <div class="cta-option">
-              <i class="fas fa-trash-alt"></i>
-              <h4>Donate Plastic</h4>
-              <p>We accept clean #5 PP materials</p>
-              <a href="donate.html" class="button small">Learn How</a>
-            </div>
-            
-            <div class="cta-option">
-              <i class="fas fa-lightbulb"></i>
-              <h4>Propose a Project</h4>
-              <p>Have an idea for recycled products?</p>
-              <a href="propose.html" class="button small">Submit Idea</a>
-            </div>
+        <div class="card">
+          <img src="images/extruder.jpg" alt="Extruder Machine">
+          <div class="card-content">
+            <h3>Open-Source Machines</h3>
+            <p>Learn about our recycling equipment and processes</p>
+            <a href="machines.html" class="btn">View Machines</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="main-footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <img src="images/logo-icon.svg" alt="Oxford Precious Plastic" class="footer-logo" width="80">
-        <p>Redefining plastic's potential through education, innovation, and community action.</p>
-        <div class="social-links">
-          <a href="https://instagram.com/oxfordpreciousplastic" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://youtube.com/oxfordpreciousplastic" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="https://github.com/oxfordpreciousplastic" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://tiktok.com/@oxfordpreciousplastic" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        </div>
-      </div>
-      
-      <div class="footer-links">
-        <div class="footer-column">
-          <h4>Explore</h4>
-          <ul>
-            <li><a href="about.html">Our Story</a></li>
-            <li><a href="team.html">Meet the Team</a></li>
-            <li><a href="projects.html">Current Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="plastics-guide.html">Plastic Identification</a></li>
-            <li><a href="plans.html">Machine Blueprints</a></li>
-            <li><a href="research-papers.html">Research Papers</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="mailto:contact@oxfordpreciousplastic.com">contact@oxfordpreciousplastic.com</a></li>
-            <li>University of Mississippi</li>
-            <li>Oxford, MS 38677</li>
-            <li><a href="calendar.html">Lab Hours</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <div class="container">
-        <p>&copy; 2023 Oxford Precious Plastic. Inspired by the global <a href="https://preciousplastic.com" target="_blank">Precious Plastic</a> movement.</p>
-        <ul class="footer-legal">
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Use</a></li>
-        </ul>
-      </div>
-    </div>
+  <footer>
+    <p>&copy; 2023 Oxford Precious Plastic. Part of the global Precious Plastic movement.</p>
   </footer>
-
-  <script src="scripts.js"></script>
 </body>
 </html>
