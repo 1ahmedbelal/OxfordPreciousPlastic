@@ -5,14 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Machines | Oxford Precious Plastic</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/machines.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script type="module" src="scripts/auth.js"></script>
 </head>
 <body>
   <header>
     <nav>
-      <img src="images/logo.svg" alt="Oxford Precious Plastic" class="logo">
+      <a href="index.html"><img src="images/logo.png" alt="Oxford Precious Plastic" class="logo"></a>
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html" id="dashboardLink">Dashboard</a>
         <a href="machines.html" class="active">Machines</a>
         <a href="products.html">Products</a>
         <a href="team.html">Team</a>
@@ -21,76 +25,114 @@
     </nav>
   </header>
 
-  <main class="container">
-    <h1>Our Recycling Machines</h1>
+  <main class="machines-container">
+    <section class="machines-intro">
+      <h1>Our Recycling Machines</h1>
+      <p>Open-source equipment transforming plastic waste into valuable materials</p>
+    </section>
     
-    <div class="grid">
-      <div class="card">
-        <img src="images/shredder.jpg" alt="Shredder Machine">
-        <div class="card-content">
+    <div class="machine-grid">
+      <div class="machine-card">
+        <div class="machine-image">
+          <img src="images/shredder.jpg" alt="Shredder Machine">
+        </div>
+        <div class="machine-info">
           <h2>Shredder</h2>
-          <p>Reduces plastic waste to consistent 8-10mm flakes for processing</p>
-          <h3>Specifications:</h3>
-          <ul>
-            <li>3HP electric motor</li>
-            <li>15kg/hour capacity</li>
-            <li>Safety interlock system</li>
+          <p class="machine-desc">Reduces plastic waste to consistent 8-10mm flakes for processing</p>
+          <ul class="machine-specs">
+            <li><i class="fas fa-horse-head"></i> 3HP electric motor</li>
+            <li><i class="fas fa-weight-hanging"></i> 15kg/hour capacity</li>
+            <li><i class="fas fa-shield-alt"></i> Safety interlock system</li>
           </ul>
         </div>
       </div>
       
-      <div class="card">
-        <img src="images/extruder.jpg" alt="Extruder Machine">
-        <div class="card-content">
+      <div class="machine-card">
+        <div class="machine-image">
+          <img src="images/extruder.jpg" alt="Extruder Machine">
+        </div>
+        <div class="machine-info">
           <h2>Extruder</h2>
-          <p>Transforms shredded plastic into continuous beams or filaments</p>
-          <h3>Specifications:</h3>
-          <ul>
-            <li>1500W heating elements</li>
-            <li>1kg/hour capacity</li>
-            <li>Adjustable die sizes</li>
+          <p class="machine-desc">Transforms shredded plastic into continuous beams or filaments</p>
+          <ul class="machine-specs">
+            <li><i class="fas fa-bolt"></i> 1500W heating elements</li>
+            <li><i class="fas fa-tachometer-alt"></i> 1kg/hour capacity</li>
+            <li><i class="fas fa-ruler-combined"></i> Adjustable die sizes</li>
           </ul>
         </div>
       </div>
     </div>
     
-    <section class="process-steps">
+    <section class="operation-guides" id="operationGuides">
       <h2>Operation Guides</h2>
-      
-      <div class="grid">
-        <div class="card">
-          <div class="card-content">
-            <h3>Shredder Operation</h3>
-            <ol>
-              <li>Sort plastic by type and color</li>
-              <li>Check mesh installation</li>
-              <li>Turn on machine</li>
-              <li>Feed plastic gradually</li>
-              <li>Store shredded plastic</li>
-              <li>Clean after use</li>
-            </ol>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-content">
-            <h3>Extruder Operation</h3>
-            <ol>
-              <li>Heat to 200-220°C</li>
-              <li>Wait 20 minutes</li>
-              <li>Fill hopper with plastic</li>
-              <li>Turn on motor</li>
-              <li>Discard first 2 minutes of output</li>
-              <li>Collect extruded material</li>
-            </ol>
-          </div>
-        </div>
+      <div class="login-prompt">
+        <p>Machine operation guides are available to workspace members only.</p>
+        <a href="login.html" class="btn">Login to Access Guides</a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2023 Oxford Precious Plastic. All machine designs based on Precious Plastic open-source blueprints.</p>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Oxford Precious Plastic" class="footer-logo-img">
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="machines.html">Machines</a>
+        <a href="products.html">Products</a>
+        <a href="team.html">Team</a>
+        <a href="getinvolved.html">Get Involved</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/oxfordpreciousplastic" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com/oxfordpreciousplastic" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="mailto:oxfordpreciousplastic@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.</p>
+    </div>
   </footer>
+
+  <script type="module">
+    import { auth, onAuthStateChanged } from './scripts/firebase-config.js';
+    
+    onAuthStateChanged(auth, (user) => {
+      const operationGuides = document.getElementById('operationGuides');
+      
+      if (user) {
+        // User is logged in - show guides
+        operationGuides.innerHTML = `
+          <h2>Operation Guides</h2>
+          <div class="guides-grid">
+            <div class="guide-card">
+              <h3>Shredder Operation</h3>
+              <ol>
+                <li>Sort plastic by type and color</li>
+                <li>Check mesh installation</li>
+                <li>Turn on machine</li>
+                <li>Feed plastic gradually</li>
+                <li>Store shredded plastic</li>
+                <li>Clean after use</li>
+              </ol>
+            </div>
+            
+            <div class="guide-card">
+              <h3>Extruder Operation</h3>
+              <ol>
+                <li>Heat to 200-220°C</li>
+                <li>Wait 20 minutes</li>
+                <li>Fill hopper with plastic</li>
+                <li>Turn on motor</li>
+                <li>Discard first 2 minutes of output</li>
+                <li>Collect extruded material</li>
+              </ol>
+            </div>
+          </div>
+        `;
+      }
+    });
+  </script>
 </body>
 </html>
