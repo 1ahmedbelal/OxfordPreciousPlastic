@@ -1,97 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Machines - Oxford Precious Plastic</title>
-  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
   <style>
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+    body {
+      background-color: #ffffff;
+      font-family: 'Delius', cursive;
+      color: #212529;
+      margin: 0;
+      padding: 0;
     }
-    .card img {
+    header {
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+    header img.logo {
+      height: 80px;
+    }
+    .nav-links {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #212529;
+      font-weight: 600;
+    }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #1a3e72;
+      text-align: center;
+    }
+    .machine-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .machine-card {
+      background: #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .machine-card img {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 200px;
       object-fit: cover;
     }
-    .card-content {
+    .machine-card .content {
       padding: 1.5rem;
     }
-    .btn {
-      margin-top: 1rem;
-      display: inline-block;
+    .machine-card h2 {
+      margin-top: 0;
+      color: #1a3e72;
+      font-size: 1.3rem;
+    }
+    .machine-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+    footer {
+      background-color: white;
+      padding: 3rem 1rem;
+      border-top: 1px solid #eee;
+    }
+    footer .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+    footer h3 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    footer ul li {
+      margin-bottom: 10px;
+    }
+    footer ul li a {
+      color: #212529;
+      text-decoration: none;
+    }
+    footer ul li a:hover {
+      color: #1a3e72;
+    }
+    footer .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
   <header>
-    <nav>
-      <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo" />
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="machines.html" class="active">Machines</a>
-        <a href="products.html">Products</a>
-        <a href="team.html">Team</a>
-        <a href="login.html">Login</a>
-      </div>
-    </nav>
+    <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="machines.html" class="active">Machines</a>
+      <a href="products.html">Products</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </header>
 
-  <main class="container">
-    <h1>Machines</h1>
-    <p>Explore the tools we use to shred, extrude, and recycle plastic locally.</p>
-    <div class="grid">
-      <div class="card">
-        <img src="images/shredder.jpg" alt="Shredder" />
-        <div class="card-content">
-          <h2>Shredder</h2>
-          <p>Breaks down plastic waste into flakes ready for processing.</p>
+  <section class="section">
+    <h1>Machines We Use</h1>
+    <div class="machine-grid">
+      <div class="machine-card">
+        <img src="images/shredder.jpg" alt="Plastic Shredder">
+        <div class="content">
+          <h2>Plastic Shredder</h2>
+          <p>This machine cuts plastic into small flakes, preparing it for further processing. It's the first step in our recycling workflow.</p>
         </div>
       </div>
-      <div class="card">
-        <img src="images/extruder.jpg" alt="Extruder" />
-        <div class="card-content">
+      <div class="machine-card">
+        <img src="images/extruder.jpg" alt="Plastic Extruder">
+        <div class="content">
           <h2>Extruder</h2>
-          <p>Melts plastic flakes into long beams for product creation.</p>
+          <p>The extruder melts shredded plastic and pushes it through a mold to form beams, filament, or other shapes for use in construction or design.</p>
+        </div>
+      </div>
+      <div class="machine-card">
+        <img src="images/injection.jpg" alt="Injection Molder">
+        <div class="content">
+          <h2>Injection Molder</h2>
+          <p>This machine compresses molten plastic into reusable molds, helping us produce strong, durable objects like coasters and tools.</p>
         </div>
       </div>
     </div>
-  </main>
+  </section>
 
   <footer>
-    <div class="container grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+    <div class="section grid">
       <div>
         <h3>About</h3>
         <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="academy.html">Academy</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Impact</a></li>
         </ul>
       </div>
       <div>
         <h3>Shop</h3>
         <ul>
-          <li><a href="products.html">Recycled Products</a></li>
-          <li><a href="machines.html">Machines</a></li>
+          <li><a href="#">Machines</a></li>
+          <li><a href="#">Recycled Products</a></li>
+          <li><a href="#">Parts & Equipment</a></li>
         </ul>
       </div>
       <div>
-        <h3>Legal</h3>
-        <p>All Precious Plastic content is shared under Creative Commons Attribution.</p>
+        <h3>More</h3>
+        <ul>
+          <li><a href="#">Product Support</a></li>
+          <li><a href="#">Reuse Program</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
       </div>
       <div>
         <h3>Connect</h3>
         <p>Email: <a href="mailto:oxfordpreciousplastic@gmail.com">oxfordpreciousplastic@gmail.com</a></p>
         <div>
-          <a href="#"><img src="images/logo.png" alt="Logo" style="height: 40px;" /></a>
+          <a href="#"><img src="images/logo.png" alt="Logo" style="height: 40px;"></a>
         </div>
       </div>
     </div>
-    <p style="margin-top: 2rem">&copy; 2025 Oxford Precious Plastic</p>
+    <p class="copyright">&copy; 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.</p>
   </footer>
 </body>
 </html>
