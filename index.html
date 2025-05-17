@@ -1,89 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oxford Precious Plastic</title>
-  <link rel="stylesheet" href="styles/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css" />
   <script type="module" src="scripts/auth.js"></script>
 </head>
 <body>
+  <!-- Header + Announcement -->
+  <div style="background-color: #27AE60; color: white; text-align: center; padding: 0.5rem; font-weight: bold">
+    Please note: We do not accept plastic directly from the public.
+  </div>
+  
+  <!-- Nav -->
   <header>
     <nav>
-      <a href="index.html"><img src="images/logo.png" alt="Oxford Precious Plastic" class="logo"></a>
+      <img src="images/logo.svg" alt="Oxford Precious Plastic" class="logo" />
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
-        <a href="dashboard.html" id="dashboardLink">Dashboard</a>
+        <a href="dashboard.html">Dashboard</a>
         <a href="machines.html">Machines</a>
         <a href="products.html">Products</a>
         <a href="team.html">Team</a>
-        <a href="login.html" id="loginBtn">Login</a>
+        <a href="login.html" id="logoutBtn">Login</a>
       </div>
     </nav>
   </header>
 
-  <section class="hero" style="background-image: url('images/hero.jpg')">
-    <div class="hero-overlay"></div>
+  <!-- Hero -->
+  <section class="hero">
     <div class="hero-content">
       <h1>Transforming Plastic Waste in Mississippi</h1>
-      <p class="subtitle">High school student-led initiative creating durable products from recycled plastics</p>
-      <a href="getinvolved.html" class="btn btn-hero">Get Involved</a>
     </div>
   </section>
 
-  <main class="container">
-    <section class="mission-section">
-      <h2>Our Mission</h2>
-      <p class="mission-statement">We collect, shred, and transform local plastic waste into durable, meaningful products for our community while advancing plastic recycling knowledge.</p>
-      
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-image-container">
-            <img src="images/bench.jpg" alt="Recycled Bench" class="card-image">
-          </div>
-          <div class="card-content">
-            <h3>Community Benches</h3>
-            <p>Durable outdoor seating made from recycled #5 polypropylene</p>
-            <a href="products.html" class="btn btn-card">Buy Now</a>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-image-container">
-            <img src="images/extruder.jpg" alt="Extruder Machine" class="card-image">
-          </div>
-          <div class="card-content">
-            <h3>Open-Source Machines</h3>
-            <p>Learn about our recycling equipment and processes</p>
-            <a href="machines.html" class="btn btn-card">View Machines</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <!-- Intro Text -->
+  <section class="container">
+    <p style="margin-top: 2rem; font-size: 1.2rem; text-align: center;">
+      We collect, shred, and transform local plastic waste into durable, meaningful products for our community while advancing plastic recycling knowledge.
+    </p>
+  </section>
 
-  <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="images/logo.png" alt="Oxford Precious Plastic" class="footer-logo-img">
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="machines.html">Machines</a>
-        <a href="products.html">Products</a>
-        <a href="team.html">Team</a>
-        <a href="getinvolved.html">Get Involved</a>
-      </div>
-      <div class="footer-social">
-        <a href="https://instagram.com/oxfordpreciousplastic" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://facebook.com/oxfordpreciousplastic" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="mailto:oxfordpreciousplastic@gmail.com"><i class="fas fa-envelope"></i></a>
+  <!-- Cards Section -->
+  <section class="container grid" style="margin-top: 3rem">
+    <div class="card">
+      <img src="images/bench.jpg" alt="Bench" />
+      <div class="card-content">
+        <h2>Benches</h2>
+        <p>Durable seating made from 100% recycled plastic.</p>
+        <a href="products.html" class="btn">Buy</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.</p>
+    <div class="card">
+      <img src="images/extruder.jpg" alt="Extruder" />
+      <div class="card-content">
+        <h2>Machines</h2>
+        <p>Explore our custom-built shredders and extruders.</p>
+        <a href="machines.html" class="btn">Explore</a>
+      </div>
     </div>
+  </section>
+
+  <!-- Student-led Message -->
+  <section class="container" style="margin-top: 3rem; text-align: center;">
+    <h2 style="margin-bottom: 1rem">Student-led initiative creating durable products from recycled plastics</h2>
+    <a href="getinvolved.html" class="btn">Get Involved</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+      <div>
+        <h3>About</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="academy.html">Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="products.html">Recycled Products</a></li>
+          <li><a href="machines.html">Machines</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <p>All Precious Plastic content is shared under Creative Commons Attribution.</p>
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <p>Email: <a href="mailto:oxfordpreciousplastic@gmail.com">oxfordpreciousplastic@gmail.com</a></p>
+        <div>
+          <a href="#"><img src="images/logo.svg" alt="Logo" style="height: 40px;" /></a>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top: 2rem">&copy; 2025 Oxford Precious Plastic</p>
   </footer>
+
+  <script>
+    // Simple protection (will be backed by Firebase auth script)
+    if (window.location.pathname.includes('dashboard.html') && !localStorage.getItem('userLoggedIn')) {
+      window.location.href = 'login.html';
+    }
+  </script>
 </body>
 </html>
