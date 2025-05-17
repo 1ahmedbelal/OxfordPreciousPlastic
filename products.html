@@ -1,64 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Products | Oxford Precious Plastic</title>
-  <link rel="stylesheet" href="styles/main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products - Oxford Precious Plastic</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 1.5rem;
+    }
+    .btn {
+      margin-top: 1rem;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
   <header>
     <nav>
-      <img src="images/logo.svg" alt="Oxford Precious Plastic" class="logo">
+      <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo" />
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="dashboard.html">Dashboard</a>
         <a href="machines.html">Machines</a>
         <a href="products.html" class="active">Products</a>
         <a href="team.html">Team</a>
-        <a href="login.html" id="loginBtn">Login</a>
+        <a href="login.html">Login</a>
       </div>
     </nav>
   </header>
 
   <main class="container">
-    <h1>Our Recycled Products</h1>
-    
+    <h1>Recycled Products</h1>
+    <p>All items are crafted from locally recycled plastic waste by our student-led team.</p>
     <div class="grid">
       <div class="card">
-        <img src="images/bench.jpg" alt="Recycled Bench">
+        <img src="images/bench.jpg" alt="Bench" />
         <div class="card-content">
-          <h2>Community Bench</h2>
-          <p><strong>Materials:</strong> 100% recycled #5 polypropylene</p>
-          <p><strong>Plastic Equivalent:</strong> ~600 plastic cups</p>
-          <p><strong>Dimensions:</strong> 48" x 15" x 18"</p>
-          <p><strong>Weight:</strong> 12.5 kg</p>
-          <a href="getinvolved.html" class="btn">Request for Community</a>
+          <h2>Plastic Bench</h2>
+          <p>Heavy-duty bench made entirely from #5 PP plastic beams.</p>
+          <a href="#" class="btn">Buy</a>
         </div>
       </div>
-      
       <div class="card">
-        <img src="images/chair.jpg" alt="Recycled Chair">
+        <img src="images/chair.jpg" alt="Chair" />
         <div class="card-content">
-          <h2>Classroom Chair</h2>
-          <p><strong>Materials:</strong> Recycled PP with steel frame</p>
-          <p><strong>Plastic Equivalent:</strong> ~250 plastic containers</p>
-          <p><strong>Dimensions:</strong> 18" x 18" x 32"</p>
-          <p><strong>Weight:</strong> 4.2 kg (plastic components)</p>
-          <a href="getinvolved.html" class="btn">Request for School</a>
+          <h2>Recycled Chair</h2>
+          <p>Durable recycled plastic seating, reinforced with local wood.</p>
+          <a href="#" class="btn">Buy</a>
         </div>
       </div>
     </div>
-    
-    <section>
-      <h2>Custom Projects</h2>
-      <p>We accept custom project requests from the Oxford community. All projects must use our available recycled materials and align with our mission.</p>
-      <a href="getinvolved.html" class="btn">Submit Project Idea</a>
-    </section>
   </main>
 
   <footer>
-    <p>&copy; 2023 Oxford Precious Plastic. Products made from 100% recycled materials.</p>
+    <div class="container grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+      <div>
+        <h3>About</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="academy.html">Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="products.html">Recycled Products</a></li>
+          <li><a href="machines.html">Machines</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <p>All Precious Plastic content is shared under Creative Commons Attribution.</p>
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <p>Email: <a href="mailto:oxfordpreciousplastic@gmail.com">oxfordpreciousplastic@gmail.com</a></p>
+        <div>
+          <a href="#"><img src="images/logo.png" alt="Logo" style="height: 40px;" /></a>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top: 2rem">&copy; 2025 Oxford Precious Plastic</p>
   </footer>
 </body>
 </html>
