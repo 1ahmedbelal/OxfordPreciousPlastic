@@ -1,111 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Team | Oxford Precious Plastic</title>
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/team.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team - Oxford Precious Plastic</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    .team-section {
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .team-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+    }
+    .team-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .team-name {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .team-role {
+      color: #666;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
   <header>
     <nav>
-      <a href="index.html"><img src="images/logo.png" alt="Oxford Precious Plastic" class="logo"></a>
+      <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo" />
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="dashboard.html" id="dashboardLink">Dashboard</a>
+        <a href="dashboard.html">Dashboard</a>
         <a href="machines.html">Machines</a>
         <a href="products.html">Products</a>
         <a href="team.html" class="active">Team</a>
-        <a href="login.html" id="loginBtn">Login</a>
+        <a href="login.html">Login</a>
       </div>
     </nav>
   </header>
 
-  <main class="team-container">
-    <section class="team-intro">
-      <h1>Meet Our Team</h1>
-      <p>High school students from Oxford, Mississippi leading the plastic recycling revolution</p>
-    </section>
-    
-    <section class="team-members">
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-photo">
-            <img src="images/ahmed.jpg" alt="Ahmed Belal">
-          </div>
-          <div class="team-info">
-            <h3>Ahmed Belal</h3>
-            <p class="team-role">Project Lead</p>
-            <p class="team-bio">Oversees all operations and coordinates team efforts</p>
-          </div>
-        </div>
-        
-        <div class="team-card">
-          <div class="team-photo">
-            <img src="images/ghaith.jpg" alt="Ghaith Alhusban">
-          </div>
-          <div class="team-info">
-            <h3>Ghaith Alhusban</h3>
-            <p class="team-role">Machine Specialist</p>
-            <p class="team-bio">Maintains and operates all recycling equipment</p>
-          </div>
-        </div>
-        
-        <div class="team-card">
-          <div class="team-photo">
-            <img src="images/bao.jpg" alt="Bao Nguyen">
-          </div>
-          <div class="team-info">
-            <h3>Bao Nguyen</h3>
-            <p class="team-role">Product Designer</p>
-            <p class="team-bio">Creates functional designs from recycled materials</p>
-          </div>
-        </div>
-        
-        <div class="team-card">
-          <div class="team-photo">
-            <img src="images/charles.jpg" alt="Charles Sabatier">
-          </div>
-          <div class="team-info">
-            <h3>Charles Sabatier</h3>
-            <p class="team-role">Workspace Manager</p>
-            <p class="team-bio">Mentor and advisor for the student team</p>
-          </div>
-        </div>
+  <main class="team-section">
+    <h1>Meet the Team</h1>
+    <p style="margin-bottom: 2rem">Oxford High School students and mentors powering local plastic recycling</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="images/ahmed.jpg" alt="Ahmed Belal" />
+        <div class="team-name">Ahmed Belal</div>
+        <div class="team-role">Founder & Lead Engineer</div>
       </div>
-    </section>
-    
-    <section class="join-team">
-      <h2>Join Our Team</h2>
-      <p>We welcome new members from Oxford High School. No experience required - we provide full training!</p>
-      <a href="getinvolved.html" class="btn">Apply Now</a>
-    </section>
+      <div class="team-card">
+        <img src="images/ghaith.jpg" alt="Ghaith Alhusban" />
+        <div class="team-name">Ghaith Alhusban</div>
+        <div class="team-role">Product & Design Specialist</div>
+      </div>
+      <div class="team-card">
+        <img src="images/bao.jpg" alt="Bao Nguyen" />
+        <div class="team-name">Bao Nguyen</div>
+        <div class="team-role">Fabrication & Process Manager</div>
+      </div>
+      <div class="team-card">
+        <img src="images/charles.jpg" alt="Charles Sabatier" />
+        <div class="team-name">Charles Sabatier</div>
+        <div class="team-role">Mentor & Workspace Director</div>
+      </div>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="images/logo.png" alt="Oxford Precious Plastic" class="footer-logo-img">
+  <footer>
+    <div class="container grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+      <div>
+        <h3>About</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="academy.html">Academy</a></li>
+        </ul>
       </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="machines.html">Machines</a>
-        <a href="products.html">Products</a>
-        <a href="team.html">Team</a>
-        <a href="getinvolved.html">Get Involved</a>
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="products.html">Recycled Products</a></li>
+          <li><a href="machines.html">Machines</a></li>
+        </ul>
       </div>
-      <div class="footer-social">
-        <a href="https://instagram.com/oxfordpreciousplastic" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://facebook.com/oxfordpreciousplastic" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="mailto:oxfordpreciousplastic@gmail.com"><i class="fas fa-envelope"></i></a>
+      <div>
+        <h3>Legal</h3>
+        <p>All Precious Plastic content is shared under Creative Commons Attribution.</p>
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <p>Email: <a href="mailto:oxfordpreciousplastic@gmail.com">oxfordpreciousplastic@gmail.com</a></p>
+        <div>
+          <a href="#"><img src="images/logo.png" alt="Logo" style="height: 40px;" /></a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.</p>
-    </div>
+    <p style="margin-top: 2rem">&copy; 2025 Oxford Precious Plastic</p>
   </footer>
 </body>
 </html>
