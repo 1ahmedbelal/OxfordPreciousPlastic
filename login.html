@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Oxford Precious Plastic</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script type="module" src="scripts/auth.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="images/logo.svg" alt="Oxford Precious Plastic" class="logo">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="machines.html">Machines</a>
+        <a href="products.html">Products</a>
+        <a href="team.html">Team</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container" style="max-width: 500px;">
+    <div class="card">
+      <div class="card-content">
+        <h1>Workspace Login</h1>
+        <p>Access the Oxford Precious Plastic dashboard to log activities and view statistics.</p>
+        
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+          </div>
+          
+          <div id="errorMessage" style="color: var(--warning); display: none; margin-bottom: 1rem;"></div>
+          
+          <button type="submit" class="btn" style="width: 100%;">Login</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Oxford Precious Plastic. Restricted access for workspace members only.</p>
+  </footer>
+</body>
+</html>
