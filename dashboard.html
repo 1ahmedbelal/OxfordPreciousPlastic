@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oxford Precious Plastic - Dashboard</title>
-  <link rel="stylesheet" href="../styles/main.css">
-  <link rel="stylesheet" href="../styles/dashboard.css">
-  <script type="module" src="../scripts/dashboard.js"></script>
+  <title>Dashboard | Oxford Precious Plastic</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script type="module" src="scripts/dashboard.js"></script>
 </head>
-<body>
+<body class="dashboard-page">
   <header>
     <nav>
-      <img src="../images/logo.png" alt="Oxford Precious Plastic" class="logo">
+      <a href="index.html"><img src="../images/logo.png" alt="Oxford Precious Plastic" class="logo"></a>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="dashboard.html" class="active">Dashboard</a>
@@ -23,89 +25,108 @@
     </nav>
   </header>
 
-  <main class="container">
-    <h1>Workspace Dashboard</h1>
+  <main class="dashboard-container">
+    <div class="dashboard-sidebar">
+      <h3>Workspace Tools</h3>
+      <ul>
+        <li><a href="#" class="active"><i class="fas fa-chart-line"></i> Overview</a></li>
+        <li><a href="#"><i class="fas fa-recycle"></i> Plastic Log</a></li>
+        <li><a href="#"><i class="fas fa-cubes"></i> Product Tracker</a></li>
+        <li><a href="#"><i class="fas fa-users"></i> Team Management</a></li>
+        <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+      </ul>
+    </div>
     
-    <div class="dashboard-grid">
-      <!-- Stats Overview -->
-      <div class="stats-card">
-        <h2>Plastic Processed</h2>
-        <div class="stat-value" id="totalPlastic">0 kg</div>
+    <div class="dashboard-content">
+      <h1>Workspace Dashboard</h1>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-weight-hanging"></i>
+          </div>
+          <div class="stat-info">
+            <h3>Plastic Processed</h3>
+            <p class="stat-value" id="totalPlastic">127.5 kg</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-cube"></i>
+          </div>
+          <div class="stat-info">
+            <h3>Products Created</h3>
+            <p class="stat-value" id="totalProducts">42</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="stat-info">
+            <h3>Team Members</h3>
+            <p class="stat-value" id="teamMembers">19</p>
+          </div>
+        </div>
       </div>
       
-      <div class="stats-card">
-        <h2>Products Created</h2>
-        <div class="stat-value" id="totalProducts">0</div>
-      </div>
-      
-      <div class="stats-card">
-        <h2>Team Members</h2>
-        <div class="stat-value" id="teamMembers">0</div>
-      </div>
-      
-      <!-- Data Logging Form -->
-      <div class="form-card">
-        <h2>Log New Activity</h2>
-        <form id="activityForm">
-          <div class="form-group">
-            <label for="activityType">Activity Type</label>
-            <select id="activityType" required>
-              <option value="">Select activity</option>
-              <option value="shredding">Shredding</option>
-              <option value="extrusion">Extrusion</option>
-              <option value="injection">Injection Molding</option>
-              <option value="product">Product Creation</option>
-              <option value="maintenance">Machine Maintenance</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="plasticType">Plastic Type</label>
-            <select id="plasticType">
-              <option value="">Select plastic</option>
-              <option value="PP">#5 - PP (Polypropylene)</option>
-              <option value="HDPE">#2 - HDPE</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="plasticAmount">Amount (kg)</label>
-            <input type="number" id="plasticAmount" step="0.1" min="0">
-          </div>
-          
-          <div class="form-group">
-            <label for="notes">Notes</label>
-            <textarea id="notes" rows="3"></textarea>
-          </div>
-          
-          <button type="submit" class="btn">Log Activity</button>
-        </form>
-      </div>
-      
-      <!-- Activity Feed -->
-      <div class="activity-card">
+      <div class="dashboard-section">
         <h2>Recent Activities</h2>
-        <div class="activity-feed" id="activityFeed">
+        <div class="activity-log" id="activityLog">
           <!-- Activities will be loaded here -->
         </div>
       </div>
       
-      <!-- Production Charts -->
-      <div class="chart-card">
-        <h2>Plastic Processing</h2>
-        <canvas id="plasticChart"></canvas>
-      </div>
-      
-      <div class="chart-card">
-        <h2>Product Output</h2>
-        <canvas id="productChart"></canvas>
+      <div class="dashboard-section">
+        <h2>Quick Log</h2>
+        <form id="quickLogForm" class="log-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="logType">Activity Type</label>
+              <select id="logType" required>
+                <option value="">Select activity</option>
+                <option value="shredding">Shredding</option>
+                <option value="extrusion">Extrusion</option>
+                <option value="injection">Injection Molding</option>
+                <option value="product">Product Creation</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="logPlastic">Plastic Type</label>
+              <select id="logPlastic">
+                <option value="">Select plastic</option>
+                <option value="PP">#5 - PP (Polypropylene)</option>
+                <option value="HDPE">#2 - HDPE</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="logAmount">Amount (kg)</label>
+              <input type="number" id="logAmount" step="0.1" min="0">
+            </div>
+            
+            <div class="form-group">
+              <label for="logNotes">Notes</label>
+              <input type="text" id="logNotes" placeholder="Optional notes">
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-log">Log Activity</button>
+        </form>
       </div>
     </div>
   </main>
 
-  <footer>
-    <p>&copy; 2023 Oxford Precious Plastic. All rights reserved.</p>
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.</p>
+    </div>
   </footer>
 </body>
 </html>
