@@ -50,9 +50,9 @@
       text-align: center;
     }
     .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
     }
     .card-content {
       padding: 1.5rem;
@@ -62,15 +62,19 @@
       color: #1a3e72;
     }
     .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
-      background-color: #00a651;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: bold;
-    }
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #00a651;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.btn:hover {
+  background-color: #007f3f;
+}
   </style>
 </head>
 <body>
@@ -118,7 +122,7 @@
         <div class="card-content">
           <h3>Recycled Chair</h3>
           <p>Outdoor chair designed with recycled materials and sustainable design.</p>
-          <a href="#" class="btn">Buy</a>
+          <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" class="btn" target="_blank">Buy</a>
         </div>
       </div>
     </section>
