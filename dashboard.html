@@ -4,230 +4,252 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard - Oxford Precious Plastic</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/main.css" />
-  <link rel="stylesheet" href="styles/dashboard.css" />
-  <script type="module" src="scripts/dashboard.js" defer></script>
-  <script>
-    const userLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
-    if (!userLoggedIn) {
-      window.location.href = 'login.html';
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
-      background-color: #ffffff;
       font-family: 'Delius', cursive;
+      margin: 0;
+      background-color: #f9f9f9;
     }
     header {
+      background-color: #fbe67b;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       text-align: center;
-      padding: 2rem 0 1rem;
     }
-    header img.logo {
-      height: 80px;
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
-    .nav-links {
-      margin-top: 1rem;
+    h1 {
+      text-align: center;
+    }
+    .stats {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
       flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
-    .nav-links a {
-      text-decoration: none;
-      color: #2c3e50;
-      font-weight: 600;
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+      flex: 1 1 200px;
     }
-    .nav-icons {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      display: flex;
-      gap: 1rem;
+    .log-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
     }
-    .nav-icons img {
-      height: 24px;
+    .log-form input, .log-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .log-form button {
+      background-color: #00a651;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
       cursor: pointer;
     }
+    .logs {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    .log-entry {
+      border-bottom: 1px solid #eee;
+      padding: 1rem 0;
+    }
+    .log-entry:last-child {
+      border-bottom: none;
+    }
+    .charts {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    #userFilter {
+      margin-bottom: 1rem;
+    }
   </style>
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+    import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB3k7VKpe0bS4HMs7nidPsiZA9_BEzaZV0",
+      authDomain: "precious-plastic-e6586.firebaseapp.com",
+      projectId: "precious-plastic-e6586",
+      storageBucket: "precious-plastic-e6586.appspot.com",
+      messagingSenderId: "816596846839",
+      appId: "1:816596846839:web:aa6fa29a920c9c9dce6bf2",
+      measurementId: "G-E4RD7C7JQK"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    let currentUser = null;
+    let allLogs = [];
+
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        currentUser = user;
+        document.getElementById('userName').textContent = user.displayName;
+      } else {
+        window.location.href = 'login.html';
+      }
+    });
+
+    const form = document.getElementById('logForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const task = form.task.value;
+      const hours = parseFloat(form.hours.value);
+      const plasticType = form.plasticType.value;
+      const beams = parseInt(form.beams.value) || 0;
+      const weight = parseFloat(form.weight.value) || 0;
+      const date = new Date().toISOString();
+
+      await addDoc(collection(db, 'workLogs'), {
+        user: currentUser.displayName,
+        task,
+        hours,
+        plasticType,
+        beams,
+        weight,
+        date
+      });
+
+      form.reset();
+    });
+
+    const logList = document.getElementById('logList');
+    const totalHours = document.getElementById('totalHours');
+    const totalBeams = document.getElementById('totalBeams');
+    const totalWeight = document.getElementById('totalWeight');
+    const userFilter = document.getElementById('userFilter');
+    const ctx = document.getElementById('logChart').getContext('2d');
+    let chart;
+
+    function updateChart(data) {
+      const labels = data.map(log => log.user);
+      const hours = data.map(log => log.hours);
+
+      if (chart) chart.destroy();
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: 'Hours Worked',
+            data: hours,
+            backgroundColor: '#00a651'
+          }]
+        }
+      });
+    }
+
+    function renderLogs(filteredLogs) {
+      logList.innerHTML = '';
+      let hourSum = 0, beamSum = 0, weightSum = 0;
+      filteredLogs.forEach(data => {
+        hourSum += data.hours;
+        beamSum += data.beams;
+        weightSum += data.weight;
+        const div = document.createElement('div');
+        div.className = 'log-entry';
+        div.innerHTML = `<strong>${data.user}</strong> - ${data.task} (${data.plasticType})<br/>
+                         <em>${data.hours}h, ${data.beams} beams, ${data.weight}kg</em><br/>
+                         <small>${new Date(data.date).toLocaleString()}</small>`;
+        logList.appendChild(div);
+      });
+      totalHours.textContent = hourSum.toFixed(1);
+      totalBeams.textContent = beamSum;
+      totalWeight.textContent = weightSum.toFixed(1);
+      updateChart(filteredLogs);
+    }
+
+    userFilter.addEventListener('input', () => {
+      const value = userFilter.value.toLowerCase();
+      const filtered = allLogs.filter(log => log.user.toLowerCase().includes(value));
+      renderLogs(filtered);
+    });
+
+    onSnapshot(query(collection(db, 'workLogs'), orderBy('date', 'desc')), (snapshot) => {
+      allLogs = snapshot.docs.map(doc => doc.data());
+      renderLogs(allLogs);
+    });
+  </script>
 </head>
 <body>
-  <header style="background-color: #fbe67b; padding: 1.5rem 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
-    
-    <!-- Logo -->
-    <a href="index.html">
-      <img src="images/logo.png" alt="Oxford Precious Plastic" class="logo" style="height: 70px;" />
-    </a>
+  <header>
+    <h1>Oxford Precious Plastic Dashboard</h1>
+    <p>Welcome, <span id="userName">Loading...</span></p>
+  </header>
+  <div class="container">
 
-    <!-- Navigation Links -->
-    <nav style="flex-grow: 1; text-align: center; margin-top: 1rem;">
-      <div class="nav-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem;">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="machines.html">Machines</a>
-        <a href="products.html">Products</a>
-        <a href="how.html">How To</a>
-        <a href="team.html">Team</a>
-        <a href="contact.html">Contact</a>
+    <div class="stats">
+      <div class="stat-card">
+        <h2>Total Hours</h2>
+        <p id="totalHours">0</p>
       </div>
-    </nav>
+      <div class="stat-card">
+        <h2>Total Beams</h2>
+        <p id="totalBeams">0</p>
+      </div>
+      <div class="stat-card">
+        <h2>Total Weight (kg)</h2>
+        <p id="totalWeight">0</p>
+      </div>
+    </div>
 
-    <!-- Icons: Search, Login, Cart -->
-    <div class="header-icons" style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
-      <a href="search.html"><img src="images/search.png" alt="Search" style="height: 24px;" /></a>
-      <a href="login.html"><img src="images/login.png" alt="Login" style="height: 24px;" /></a>
-      <a href="cart.html"><img src="images/cart.png" alt="Cart" style="height: 24px;" /></a>
+    <div class="log-form">
+      <h2>Log Your Work</h2>
+      <form id="logForm">
+        <label>Task Description</label>
+        <textarea name="task" required></textarea>
+        <label>Plastic Type</label>
+        <input name="plasticType" placeholder="#5 PP, #2 HDPE..." required />
+        <label>Beams Made</label>
+        <input type="number" name="beams" min="0" />
+        <label>Plastic Weight Used (kg)</label>
+        <input type="number" name="weight" min="0" step="0.01" />
+        <label>Hours Worked</label>
+        <input type="number" name="hours" min="0.1" step="0.1" required />
+        <button type="submit">Submit Log</button>
+      </form>
+    </div>
+
+    <div class="logs">
+      <h2>Recent Activity</h2>
+      <input type="text" id="userFilter" placeholder="Filter by user name..." />
+      <div id="logList"></div>
+    </div>
+
+    <div class="charts">
+      <h2>Hours Worked per Member</h2>
+      <canvas id="logChart"></canvas>
     </div>
 
   </div>
-</header>
-
-
-  <main class="container">
-    <h1>Workspace Dashboard</h1>
-
-    <div class="dashboard-grid">
-      <div class="stats-card">
-        <h2>Plastic Processed</h2>
-        <div class="stat-value" id="totalPlastic">0 kg</div>
-      </div>
-      <div class="stats-card">
-        <h2>Products Created</h2>
-        <div class="stat-value" id="totalProducts">0</div>
-      </div>
-      <div class="stats-card">
-        <h2>Team Members</h2>
-        <div class="stat-value" id="teamMembers">0</div>
-      </div>
-
-      <div class="form-card">
-        <h2>Log New Activity</h2>
-        <form id="activityForm">
-          <div class="form-group">
-            <label for="activityType">Activity Type</label>
-            <select id="activityType" required>
-              <option value="">Select activity</option>
-              <option value="shredding">Shredding</option>
-              <option value="extrusion">Extrusion</option>
-              <option value="injection">Injection Molding</option>
-              <option value="product">Product Creation</option>
-              <option value="maintenance">Machine Maintenance</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="plasticType">Plastic Type</label>
-            <select id="plasticType">
-              <option value="">Select plastic</option>
-              <option value="PP">#5 - PP (Polypropylene)</option>
-              <option value="HDPE">#2 - HDPE</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="plasticAmount">Amount (kg)</label>
-            <input type="number" id="plasticAmount" step="0.1" min="0" />
-          </div>
-
-          <div class="form-group">
-            <label for="notes">Notes</label>
-            <textarea id="notes" rows="3"></textarea>
-          </div>
-
-          <button type="submit" class="btn">Log Activity</button>
-        </form>
-      </div>
-
-      <div class="activity-card">
-        <h2>Recent Activities</h2>
-        <div class="activity-feed" id="activityFeed"></div>
-      </div>
-
-      <div class="chart-card">
-        <h2>Plastic Processing</h2>
-        <canvas id="plasticChart"></canvas>
-      </div>
-
-      <div class="chart-card">
-        <h2>Product Output</h2>
-        <canvas id="productChart"></canvas>
-      </div>
-    </div>
-  </main>
-
-  <footer style="background-color: white; padding: 3rem 1rem; border-top: 1px solid #eee;">
-    <div class="container grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem;">
-      <div>
-        <h3>About</h3>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Impact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Shop</h3>
-        <ul>
-          <li><a href="#">Machines</a></li>
-          <li><a href="#">Recycled Products</a></li>
-          <li><a href="#">Parts & Equipment</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>More</h3>
-        <ul>
-          <li><a href="#">Product Support</a></li>
-          <li><a href="#">Reuse Program</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Connect</h3>
-        <p>Email: <a href=\"mailto:oxfordpreciousplastic@gmail.com\">oxfordpreciousplastic@gmail.com</a></p>
-        <div style=\"display: flex; gap: 0.5rem; margin-top: 0.5rem;\">\n          <a href=\"#\"><img src=\"images/logo.png\" alt=\"Logo\" style=\"height: 40px;\" /></a>\n        </div>\n      </div>\n    </div>\n    <p style=\"text-align: center; margin-top: 2rem; font-size: 0.85rem; color: #888;\">\n      © 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.\n    </p>\n  </footer>\n</body>\n</html>\n"
-<footer style="background-color: #fbe67b; padding: 2rem 1rem; box-shadow: 0 -2px 5px rgba(0,0,0,0.1);">
-  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
-    
-    <div>
-      <h3 style="margin-bottom: 1rem;">About</h3>
-      <ul style="list-style: none; padding: 0;">
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="impact.html">Impact</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3 style="margin-bottom: 1rem;">Shop</h3>
-      <ul style="list-style: none; padding: 0;">
-        <li><a href="machines.html">Machines</a></li>
-        <li><a href="products.html">Recycled Products</a></li>
-        <li><a href="parts.html">Parts & Equipment</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3 style="margin-bottom: 1rem;">More</h3>
-      <ul style="list-style: none; padding: 0;">
-        <li><a href="support.html">Product Support</a></li>
-        <li><a href="reuse.html">Reuse Program</a></li>
-        <li><a href="careers.html">Careers</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3 style="margin-bottom: 1rem;">Connect</h3>
-      <p>Email: <a href="mailto:oxfordpreciousplastic@gmail.com">oxfordpreciousplastic@gmail.com</a></p>
-      <div style="margin-top: 1rem;">
-        <a href="index.html"><img src="images/logo.png" alt="Logo" style="height: 40px;" /></a>
-      </div>
-    </div>
-
-  </div>
-  <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem;">&copy; 2025 Oxford Precious Plastic. All Precious Plastic content is shared under Creative Commons Attribution.</p>
-</footer>
-}
+</body>
+</html>
